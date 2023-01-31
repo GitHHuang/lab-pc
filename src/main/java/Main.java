@@ -33,7 +33,7 @@ public class Main {
         service.execute(consumer2);
         service.execute(consumer3);
 
-        Thread.sleep(10 * 1000);
+        Thread.sleep(5 * 1000);
 
         // 停止生产者
         producer1.stop();
@@ -41,6 +41,16 @@ public class Main {
         producer3.stop();
 
         Thread.sleep(3000);
+
+        Producer producer4 = new Producer(queue);
+        service.execute(producer4);
+
+        Thread.sleep(5000);
+
+        producer4.stop();
+
+        Thread.sleep(3000);
+
         service.shutdown();
     }
 }
